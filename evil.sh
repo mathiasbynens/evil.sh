@@ -9,3 +9,6 @@ tset -Qe $'\t'
 
 # Randomly make the shell exit whenever a command has a non-zero exit status
 ((RANDOM % 10)) || set -o errexit
+
+# Let `cat` swallow every input and never return anything
+alias cat=true
