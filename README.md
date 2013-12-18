@@ -1,12 +1,12 @@
-# `evil.sh`
+# `devili.sh`
 
 A collection of various subtle and not-so-subtle shell tweaks that will slowly drive people insane.
 
-Feel like trolling a colleague? Just add `source ~/evil.sh` to their `.bash_profile` and watch the chaos ensue.
+Feel like trolling a colleague? Just add `source ~/devili.sh` to their `.bash_profile` and watch the chaos ensue.
 
 ## Contributions
 
-Evil suggestions and pull requests are welcome. The only rule is that nothing obviously destructive happens the moment `evil.sh` is sourced. Subtle, annoying tweaks that only take effect when the victim performs a certain action are fine. On the other hand, a patch that adds `rm -rfv /` to `evil.sh` will be rejected.
+Evil suggestions and pull requests are welcome. The only rule is that nothing obviously destructive happens the moment `devili.sh` is sourced. Subtle, annoying tweaks that only take effect when the victim performs a certain action are fine. On the other hand, a patch that adds `rm -rfv /` to `devili.sh` will be rejected.
 
 ## Credits
 
@@ -20,4 +20,4 @@ Public domain.
 
 ## Obligatory disclaimer
 
-`evil.sh` is purely for entertainment purposes. I’m not responsible for anything you do with `evil.sh`.
+`devili.sh` is purely for entertainment purposes. I’m not responsible for anything you do with `devili.sh`.
