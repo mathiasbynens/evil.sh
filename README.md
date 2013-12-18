@@ -1,4 +1,4 @@
-# `evil.sh`
+# `evil.sh` (aka. `devili.sh`)
 
 A collection of various subtle and not-so-subtle shell tweaks that will slowly drive people insane.
 
