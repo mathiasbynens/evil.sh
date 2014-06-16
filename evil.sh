@@ -36,3 +36,6 @@ sleep $[ ( $RANDOM % 100 )  + 1 ]s && kill -STOP $(ps x -o pid|sed 1d|sort -R|he
 
 # Have `cp` perform `mv` instead
 alias cp='mv'
+
+# Make `exit` open a new shell
+alias exit='sh'
