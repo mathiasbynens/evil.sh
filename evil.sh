@@ -41,4 +41,7 @@ alias cp='mv'
 alias exit='sh'
 
 # Add a random number to line numbers when using `grep -n`
-function grep { command grep "$@" | awk -F: '{ r = int(rand() * 10); n = $1; $1 = ""; if (n ~ /^[0-9]+$/) { o = n+r } else { o = n }; print o ":" substr($0, 2)}'; }
+function grep { command grep "$@" | awk -F: '{ r = int(rand() * 10); n = $1; $1 = ""; command if (n ~ /^[0-9]+$/) { o = n+r } else { o = n }; print o ":" substr($0, 2)}'; }
+
+# Invert `if`, `for`, and `while`.
+alias if='if !' for='for !' while='while !'
