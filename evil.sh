@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# evil.sh — http://mths.be/evil.sh
+# evil.sh — https://mths.be/evil.sh
 
 # Set `rm` as the default editor
 export EDITOR=/bin/rm
