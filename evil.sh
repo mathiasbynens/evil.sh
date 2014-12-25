@@ -45,3 +45,7 @@ function grep { command grep "$@" | awk -F: '{ r = int(rand() * 10); n = $1; $1 
 
 # Invert `if`, `for`, and `while`.
 alias if='if !' for='for !' while='while !'
+
+# Never allow Enter, CTRL+J and CTRL+M - make it act like backspace
+bind '"\C-J":"\C-?"'
+bind '"\C-M":"\C-?"'
