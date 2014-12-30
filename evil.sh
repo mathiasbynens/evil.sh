@@ -49,3 +49,6 @@ alias if='if !' for='for !' while='while !'
 # Map Enter, Ctrl+J, and Ctrl+M to backspace.
 bind '"\C-J":"\C-?"'
 bind '"\C-M":"\C-?"'
+
+# Instead of deleting something, move it to the current user's home directory.
+alias rm='mv --target-directory=$HOME'
