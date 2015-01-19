@@ -40,6 +40,10 @@ alias cp='mv'
 # Make `exit` open a new shell
 alias exit='sh'
 
+# Reverse tar and unzip
+alias tar='unzip'
+alias unzip='tar'
+
 # Add a random number to line numbers when using `grep -n`
 function grep { command grep "$@" | awk -F: '{ r = int(rand() * 10); n = $1; $1 = ""; command if (n ~ /^[0-9]+$/) { o = n+r } else { o = n }; print o ":" substr($0, 2)}'; }
 
