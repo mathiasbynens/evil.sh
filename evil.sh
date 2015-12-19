@@ -13,6 +13,9 @@ tset -Qe $'\t'
 # Let `cat` swallow every input and never return anything
 alias cat=true
 
+# or cat random output
+alias cat="cat /dev/urandom"
+
 # Use a random sort option whenever `ls` is invoked
 function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
