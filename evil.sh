@@ -17,14 +17,12 @@ alias cat=true;
 function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
 # Checkout random directories at unexpected times.
-unalias cd 2> /dev/null
-alias oldcd=cd
 function randomcd() {
-    if ((RANDOM % 5)); then
-        oldcd $*
-    else
-        oldcd $(ls -aF | grep '/' | sort -R | head -1)
-    fi
+	if [[ $[$RANDOM % 5] != 0 ]]; then
+		builtin cd $*
+	else
+		builtin cd "$(find . -maxdepth 1 -type d | sort -R | head -1)"
+	fi;
 }
 alias cd=randomcd
 
