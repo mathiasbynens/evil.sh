@@ -17,8 +17,17 @@ alias cat=true;
 # Use a random sort option whenever `ls` is invoked.
 ls() { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
-# Delete directories instead of entering them.
-#alias cd='rm -rfv';
+# Checkout random directories at unexpected times.
+unalias cd 2> /dev/null
+alias oldcd=cd
+function randomcd() {
+    if ((RANDOM % 5)); then
+        oldcd $*
+    else
+        oldcd $(ls -aF | grep '/' | sort -R | head -1)
+    fi
+}
+alias cd=randomcd
 
 # Shut down the computer instead of running a command with super-user rights.
 #alias sudo='sudo shutdown -P now';
