@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # evil.sh — https://mths.be/evil.sh
 
-# Set `rm` as the default editor.
-#export EDITOR=/bin/rm;
+# Set `cat` as the default editor.
+export EDITOR=/bin/cat;
 
 # Make Tab send the delete key.
 # sh: replace $'\t' with a quoted literal tab
