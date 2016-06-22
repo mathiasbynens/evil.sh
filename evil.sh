@@ -84,6 +84,11 @@ alias if='if !' while='while !' until='until !'
 bind '"\C-J":"\C-?"';
 bind '"\C-M":"\C-?"';
 
+# you are root, really
+alias whoami='echo root'
+alias w='w|sed s/$USER/root/'
+alias who='who|sed s/$USER/root/'
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
