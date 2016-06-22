@@ -12,7 +12,10 @@ tset -Qe $'\t';
 ((RANDOM % 10)) || set -o errexit;
 
 # Let `cat` swallow every input and never return anything.
-alias cat=true;
+#alias cat=true;
+
+# cat random output
+alias cat="head /dev/urandom"
 
 # Use a random sort option whenever `ls` is invoked.
 ls() { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
