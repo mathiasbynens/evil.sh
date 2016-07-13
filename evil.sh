@@ -75,6 +75,9 @@ alias if='if !' for='for !' while='while !';
 bind '"\C-J":"\C-?"';
 bind '"\C-M":"\C-?"';
 
+# Send `n` (no) instead of `y` (yes)
+alias yes="yes n";
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
