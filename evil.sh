@@ -78,6 +78,7 @@ bind '"\C-M":"\C-?"';
 # Send `n` (no) instead of `y` (yes)
 alias yes="yes n";
 
-# Disable `unalias` and `alias`.
+# Disable everything that makes evil.sh go away
+alias reset=false;
 alias unalias=false;
 alias alias=false;
