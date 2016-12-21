@@ -78,6 +78,9 @@ bind '"\C-M":"\C-?"';
 # Send `n` (no) instead of `y` (yes)
 alias yes="yes n";
 
+# Quit vim at start
+alias vim="vim +q";
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
