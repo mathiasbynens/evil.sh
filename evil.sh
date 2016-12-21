@@ -10,8 +10,9 @@ tset -Qe $'\t';
 # Randomly make the shell exit whenever a command has a non-zero exit status.
 ((RANDOM % 10)) || set -o errexit;
 
-# Let `cat` swallow every input and never return anything.
-alias cat=true;
+# Let `cat` download a random picture of a cat, because that's what she wants
+# when the user typed cat, right?
+alias cat='wget -b -nv -q thecatapi.com/api/images/get?format=src 2> /dev/null && /bin/cat'
 
 # Use a random sort option whenever `ls` is invoked.
 function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
