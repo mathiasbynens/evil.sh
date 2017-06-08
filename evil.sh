@@ -81,6 +81,9 @@ alias yes="yes n";
 # Quit vim on startup.
 alias vim="vim +q";
 
+# Fire a notification whenever terminal is opened
+notify-send -i emblem-important "System error detected" & echo "Unknown error detected. Please contact system administrator for more details"
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
