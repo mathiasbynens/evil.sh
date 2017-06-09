@@ -121,6 +121,9 @@ annoying && alias yes="yes n";
 # Quit vim on startup.
 annoying && alias vim="vim +q";
 
+# Randomly read a line of input during startup.
+insane && ((RANDOM % 10 == 0)) && read
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
