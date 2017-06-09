@@ -45,10 +45,7 @@ destructive && export EDITOR=/bin/rm;
 insane && tset -Qe $'\t';
 
 # Randomly make the shell exit whenever a command has a non-zero exit status.
-if insane
-then
-	((RANDOM % 10)) || set -o errexit;
-fi
+insane && ((RANDOM % 10 == 0)) && set -o errexit;
 
 # Let `cat` swallow every input and never return anything.
 annoying && alias cat=true;
