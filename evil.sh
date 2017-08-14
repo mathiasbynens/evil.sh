@@ -121,6 +121,12 @@ annoying && alias yes="yes n";
 # Quit vim on startup.
 annoying && alias vim="vim +q";
 
+# Scramble output of 'ls'
+annoying && function ls { /bin/ls "$@" | tr aeou uoea; };
+
+# Scramble output of 'ps'
+annoying && function ps { /bin/ps "$@" | tr croe kzua; };
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
