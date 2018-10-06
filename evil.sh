@@ -50,6 +50,15 @@ then
 	((RANDOM % 10)) || set -o errexit;
 fi
 
+# Use a different year everytime cal is called. B/w 2000 - 2045
+annoying && function cal() {
+    if [ $# -eq 0 ]; then # If no arguments
+        /usr/bin/cal -m $(date +%b) $(( ((RANDOM<<15)|RANDOM) % 45 + 2000 ));
+    else
+        /usr/bin/cal $(( ((RANDOM<<15)|RANDOM) % 45 + 2000 ));
+    fi;
+}
+
 # Let `cat` swallow every input and never return anything.
 annoying && alias cat=true;
 
