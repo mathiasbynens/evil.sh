@@ -118,7 +118,8 @@ unusable && bind '"\C-M":"\C-?"';
 # Send `n` (no) instead of `y` (yes)
 annoying && alias yes="yes n";
 
-# Quit vim on startup.
+# Quit vi(m) on startup.
+annoying && alias vi="vi +q";
 annoying && alias vim="vim +q";
 
 # Disable `unalias` and `alias`.
