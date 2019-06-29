@@ -11,7 +11,7 @@ Evil suggestions and pull requests are welcome. The only rule is that nothing ob
 
 ## See also
 
-* [`evil.js`](https://github.com/kitcambridge/evil.js)
+* [`evil.js`](https://web.archive.org/web/20190222132600/https://github.com/kitcambridge/evil.js)
 * [`evil.css`](https://github.com/tlrobinson/evil.css)
 
 ## Credits
