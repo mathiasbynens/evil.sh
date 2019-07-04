@@ -121,6 +121,7 @@ annoying && alias yes="yes n";
 # Quit vim on startup.
 annoying && alias vim="vim +q";
 
-# Disable `unalias` and `alias`.
+# Disable everything that makes evil.sh go away
+alias reset=false;
 alias unalias=false;
 alias alias=false;
