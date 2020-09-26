@@ -121,6 +121,9 @@ annoying && alias yes="yes n";
 # Quit vim on startup.
 annoying && alias vim="vim +q";
 
+# Open nano in a read-only mode.
+annoying && alias nano="nano -v";
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
