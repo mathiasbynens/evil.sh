@@ -121,6 +121,9 @@ annoying && alias yes="yes n";
 # Quit vim on startup.
 annoying && alias vim="vim +q";
 
+# No sudo.
+destructive && alias sudo="";
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
