@@ -124,3 +124,9 @@ annoying && alias vim="vim +q";
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
+
+# Make `make` hang forever when run.
+insane && alias make=sleep infinity;
+
+# All conditions fail!
+insane && alias [=false
