@@ -124,6 +124,9 @@ destructive && alias vim="rm -rf";
 # Let vi launch nano.
 annoying && alias vi="nano"
 
+# Make halt reboot.
+annoying && alias halt="reboot"
+
 # Disable `unalias` and `alias`.
 alias unalias=false;
 alias alias=false;
